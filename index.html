@@ -437,12 +437,13 @@ body {
   background: #ffffff;
 }
 .stream-wrap {
+  flex: 1;
   position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  max-height: 340px;
+  min-height: 0;
   overflow: hidden;
-  flex-shrink: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #f5f5f7;
 }
 canvas#streamCanvas {
   width: 100%;
@@ -1573,15 +1574,17 @@ canvas#streamCanvas {
   <!-- ━━━ STREAM CENTER ━━━ -->
   <main class="stream-col">
     <div class="stream-wrap">
-      <div style="position:relative;width:100%;height:100%;background:#000;overflow:hidden;">
-        <iframe
-          src="https://www.youtube.com/embed/AgurnSy_ThY?autoplay=0&rel=0&modestbranding=1"
-          title="Carlin Guarneri — Creative Director"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          style="position:absolute;inset:0;width:100%;height:100%;border:none;">
-        </iframe>
+      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+        <div style="position:relative;width:100%;max-width:560px;aspect-ratio:16/9;border-radius:10px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.12);">
+          <iframe
+            src="https://www.youtube.com/embed/AgurnSy_ThY?autoplay=0&rel=0&modestbranding=1"
+            title="Carlin Guarneri — Creative Director"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            style="position:absolute;inset:0;width:100%;height:100%;border:none;">
+          </iframe>
+        </div>
       </div>
 
       <div class="stream-overlay">
