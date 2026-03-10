@@ -1431,10 +1431,9 @@ canvas#streamCanvas {
   .panel-right { display: none; }
 }
 
-/* ── MOBILE: Whatnot-style — video + chat overlay ── */
+/* ── MOBILE: clean stack — video, reviews, description ── */
 @media (max-width: 700px) {
 
-  /* Layout becomes single column */
   .layout {
     display: flex;
     flex-direction: column;
@@ -1443,87 +1442,70 @@ canvas#streamCanvas {
     min-width: 0;
   }
 
-  /* Hide left rail */
+  /* Hide left rail + nav links */
   .rail-left { display: none; }
   .nav-links { display: none; }
   .nav-bar { padding: 0 12px; }
 
-  /* Wrapper holds video + chat overlay together */
+  /* Wrapper: stack stream then reviews */
   .stream-chat-wrap {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    display: block;
   }
 
-  /* Stream column full width */
+  /* 1. Video — full width 16:9 */
   .stream-col {
+    order: 1;
     width: 100%;
     display: flex;
     flex-direction: column;
   }
-
-  /* Video 16:9 */
   .stream-wrap {
     width: 100%;
     height: 56vw;
     flex: none;
   }
 
-  /* Reviews panel floats over the video, right side */
+  /* 2. Reviews panel — full width below video */
   .panel-right {
+    order: 2;
     display: block !important;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 48vw;
-    height: 56vw;
-    background: transparent;
-    border: none;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: 20;
-    pointer-events: none;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    border-left: none;
+    border-top: 1px solid #eee;
+    background: #fff;
+    overflow: visible;
   }
-  .panel-right::-webkit-scrollbar { display: none; }
 
-  /* Hide bid summary + everything except reviews on mobile */
+  /* Hide bid summary + extra widgets in right panel */
   .bid-summary, .chat-header, .ai-chat-widget, .see-work-btn { display: none !important; }
 
-  /* Reviews list transparent bg */
-  .reviews-list {
-    background: transparent !important;
-    padding: 6px 4px;
-    pointer-events: none;
-  }
+  /* Reviews list */
+  .reviews-list { padding: 8px 12px; background: #fff; }
 
-  /* Each card — dark frosted pill */
+  /* Each review card — normal white cards */
   .review-card {
-    background: rgba(0,0,0,0.5) !important;
-    border: none !important;
+    background: #fff !important;
+    border: 1px solid #eee !important;
     border-radius: 10px !important;
-    margin-bottom: 5px !important;
-    padding: 7px 9px !important;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    pointer-events: auto;
+    margin-bottom: 10px !important;
+    padding: 12px !important;
   }
+  .rv-name { font-size: 13px !important; }
+  .rv-role { font-size: 11px !important; }
+  .rv-quote { font-size: 13px !important; line-height: 1.5 !important; }
+  .rv-more { font-size: 12px !important; }
 
-  .rv-name { color: #fff !important; font-size: 10px !important; }
-  .rv-role { color: rgba(255,255,255,0.55) !important; font-size: 9px !important; }
-  .rv-quote { color: rgba(255,255,255,0.88) !important; font-size: 10px !important; line-height: 1.35 !important; }
-  .rv-more { color: #FFD12B !important; font-size: 9px !important; }
-  .rv-full { color: rgba(255,255,255,0.82) !important; font-size: 10px !important; }
-  .rv-avatar { width: 22px !important; height: 22px !important; font-size: 9px !important; flex-shrink: 0; }
-  .rv-featured { background: rgba(255,209,43,0.25) !important; color: #FFD12B !important; font-size: 8px !important; }
-  .rv-linkedin { display: none; }
-
-  /* Lot description below video */
-  .stream-desc-bar { padding: 12px 14px 8px; background: #fff; }
+  /* 3. Lot description — below reviews (already below stream-col in HTML) */
+  .stream-desc-bar { padding: 14px 16px 8px; background: #fff; }
   .sdb-lot { font-size: 11px; }
-  .sdb-body { font-size: 13px; line-height: 1.5; }
-  .sdb-price { font-size: 18px; }
+  .sdb-body { font-size: 14px; line-height: 1.6; }
+  .sdb-price { font-size: 20px; }
 
-  /* Bid bar sticky bottom */
+  /* Bid bar sticky */
   .bid-bar {
     position: sticky;
     bottom: 0;
@@ -1534,7 +1516,7 @@ canvas#streamCanvas {
   }
 
   /* Seller pill */
-  .seller-pill-sm { max-width: 44vw; }
+  .seller-pill-sm { max-width: 50vw; }
   .spill-name { font-size: 11px; }
   .spill-sub { display: none; }
   .viewer-pill { font-size: 10px; padding: 3px 7px; }
