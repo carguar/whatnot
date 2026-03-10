@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlin Guarneri — LIVE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TOKENS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --bg:       #0C0C10;
+  --surface:  #131318;
+  --card:     #1A1A22;
+  --raised:   #20202A;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.12);
+
+  --text:     #F2F2F5;
+  --sub:      #A8A8B8;
+  --muted:    #5A5A6E;
+  --dim:      #2E2E3C;
+
+  --yellow:   #FFD12B;
+  --yellow-dk:#C9A000;
+  --yellow-bg:rgba(255,209,43,0.08);
+
+  --red:      #FF4444;
+  --green:    #34D399;
+  --blue:     #60A5FA;
+
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESET & BASE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ━━━ LIGHT PANEL OVERRIDES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rail-left, .panel-right {
+  background: #ffffff !important;
+  color: #111114;
+}
+.rail-left *, .panel-right * {
+  --surface:  #ffffff;
+  --card:     #f5f5f7;
+  --raised:   #ebebef;
+  --border:   rgba(0,0,0,0.07);
+  --border2:  rgba(0,0,0,0.11);
+  --text:     #111114;
+  --sub:      #44444f;
+  --muted:    #888898;
+  --dim:      #ccccda;
+  --yellow-bg: rgba(255,209,43,0.1);
+}
+.rail-left .seller-card,
+.rail-left .stats-block,
+.rail-left .brands-block,
+.rail-left .verticals-block { background: #ffffff; border-bottom-color: rgba(0,0,0,0.07); }
+.rail-left .seller-avatar-lg { border-color: rgba(255,209,43,0.4); }
+.rail-left .seller-name-lg { color: #111114; }
+.rail-left .seller-title-lg { color: #666676; }
+.rail-left .seller-stars, .rail-left .viewer-count { color: #666676; }
+.rail-left .stats-label { color: #888898; }
+.rail-left .stat-val { color: #C9A000; }
+.rail-left .stat-lbl { color: #44444f; }
+.rail-left .stat-row { border-bottom-color: rgba(0,0,0,0.06); }
+.rail-left .brand-chip { background: #ebebef; border-color: rgba(0,0,0,0.09); color: #44444f; }
+.rail-left .vertical-item { color: #44444f; }
+.rail-left .portfolio-link { background: #f5f5f7; border-color: rgba(0,0,0,0.1); }
+.rail-left .portfolio-link-text { color: #111114; }
+.rail-left .portfolio-link-sub, .rail-left .portfolio-link-arrow { color: #888898; }
+.see-work-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: var(--yellow);
+  color: #111114;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  padding: 11px 0;
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  transition: opacity 0.15s, transform 0.15s;
+  margin-top: 4px;
+}
+.see-work-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.panel-right .bid-summary { background: #f5f5f7 !important; border-bottom-color: rgba(0,0,0,0.07) !important; }
+.panel-right .bs-cur-label, .panel-right .bs-max-label { color: #888898; }
+.panel-right .bs-cur-val { color: #C9A000; }
+.panel-right .bs-max-val { color: #22a87a; }
+.panel-right .prog-track { background: #e0e0e8; }
+.panel-right .prog-labels, .panel-right .countdown-row { color: #888898; }
+.panel-right .cd-val { color: #44444f; }
+.panel-right .rung { background: #f5f5f7; border-color: rgba(0,0,0,0.08); }
+.panel-right .rung:first-child { background: rgba(255,209,43,0.1); border-color: rgba(201,160,0,0.3); }
+.panel-right .rung-amt { color: #111114; }
+.panel-right .rung-unit, .panel-right .rung-note, .panel-right .rung-n { color: #888898; }
+.panel-right .btn-watchlist { border-color: rgba(0,0,0,0.12); color: #44444f; }
+.panel-right .chat-scroll,
+.panel-right #chatFeedWrap { background: #ffffff; }
+.panel-right .ctext { color: #111114 !important; }
+.panel-right .ctext.sys { color: #888898 !important; }
+.panel-right .chat-input-wrap { background: #f5f5f7; border-top-color: rgba(0,0,0,0.07); }
+.panel-right .chat-input { background: #ffffff; border-color: rgba(0,0,0,0.1); color: #111114; }
+.panel-right .chat-input::placeholder { color: #aaaabc; }
+.panel-right .bid-msg { background: rgba(255,209,43,0.1); border-color: rgba(201,160,0,0.25); }
+.panel-right .bid-msg-text { color: #111114; }
+.panel-right .rec-post { background: #f5f5f7; border-color: rgba(0,0,0,0.08); }
+.panel-right .rp-name { color: #111114; }
+.panel-right .rp-role, .panel-right .rp-preview, .panel-right .rp-full { color: #44444f; }
+.panel-right .rp-expand { color: #C9A000; }
+.panel-right .rec-badge { background: rgba(255,209,43,0.15); color: #8a6800; border-color: rgba(201,160,0,0.2); }
+.panel-right .rec-section-label { color: #888898; }
+.panel-right .rec-msg { background: #f5f5f7; border-color: rgba(0,0,0,0.08); }
+.panel-right .rec-msg-name { color: #111114; }
+.panel-right .rec-msg-role { color: #888898; }
+.panel-right .rec-msg-text { color: #44444f; }
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; overflow:hidden; }
+body { min-width: 800px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NAV
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.nav {
+  height: 48px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.nav-logo-mark {
+  width: 28px; height: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.nav-logo-sub {
+  font-size: 0.68rem;
+  color: var(--muted);
+  font-weight: 400;
+  font-style: italic;
+  font-family: 'DM Sans', sans-serif;
+  margin-left: 2px;
+}
+.nav-sep {
+  width: 1px;
+  height: 18px;
+  background: var(--border2);
+}
+.nav-links { display: flex; gap: 16px; }
+.nav-link {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.nav-link:hover { color: var(--sub); }
+
+.nav-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.live-badge {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(255,68,68,0.15);
+  border: 1px solid rgba(255,68,68,0.3);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.live-dot {
+  width: 5px; height: 5px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+.btn-cta-nav {
+  background: var(--yellow);
+  color: #000;
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 7px 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-cta-nav:hover { background: #ffe85c; transform: translateY(-1px); }
+.nav-avatar {
+  width: 28px; height: 28px;
+  background: var(--yellow);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.72rem;
+  color: #000;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   THREE-COLUMN LAYOUT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.layout {
+  display: grid;
+  grid-template-columns: 220px 1fr 300px;
+  height: calc(100vh - 48px);
+  min-width: 800px;
+  overflow: hidden;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LEFT: CREDENTIAL RAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.rail-left {
+  background: #ffffff;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.rail-left::-webkit-scrollbar { width: 3px; }
+.rail-left::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
+
+/* Seller card */
+.seller-card {
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.seller-avatar-lg {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--yellow) 0%, #FF8C35 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: #000;
+  margin-bottom: 10px;
+  border: 2px solid rgba(255,209,43,0.3);
+}
+.seller-name-lg {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.seller-title-lg {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.seller-stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  color: var(--sub);
+}
+.star { color: var(--yellow); }
+.viewer-count {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* Stats */
+.stats-block {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.stats-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.stat-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+}
+.stat-row:last-child { border-bottom: none; }
+.stat-val {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--yellow);
+  line-height: 1;
+}
+.stat-lbl {
+  font-size: 0.72rem;
+  color: var(--sub);
+  text-align: right;
+  max-width: 110px;
+}
+
+/* Brands */
+.brands-block {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.brand-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+.brand-chip {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-size: 0.65rem;
+  color: var(--sub);
+  font-weight: 500;
+}
+
+/* Verticals */
+.verticals-block {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.vertical-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  font-size: 0.75rem;
+  color: var(--sub);
+}
+.vertical-dot {
+  width: 4px; height: 4px;
+  background: var(--yellow);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Portfolio link */
+.portfolio-link {
+  margin: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-md);
+  padding: 10px 12px;
+  text-decoration: none;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.portfolio-link:hover { border-color: var(--yellow); }
+.portfolio-link-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.portfolio-link-sub {
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 1px;
+}
+.portfolio-link-arrow {
+  font-size: 0.8rem;
+  color: var(--muted);
+  transition: transform 0.15s;
+}
+.portfolio-link:hover .portfolio-link-arrow { transform: translateX(2px); color: var(--yellow); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CENTER: STREAM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.stream-col {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  background: #ffffff;
+}
+.stream-wrap {
+  flex: 1;
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+}
+canvas#streamCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Overlay: top bar */
+.stream-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.stream-top-bar {
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.seller-pill-sm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 100px;
+  padding: 5px 14px 5px 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.spill-avatar {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--yellow), #FF8C35);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.72rem;
+  color: #000;
+  border: 1.5px solid var(--yellow);
+  flex-shrink: 0;
+}
+.spill-name {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #111114;
+}
+.spill-sub {
+  font-size: 0.62rem;
+  color: rgba(0,0,0,0.45);
+}
+.stream-badges {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.btn-follow-stream {
+  background: var(--yellow);
+  color: #000;
+  border: none;
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 0.15s;
+}
+.btn-follow-stream:hover { background: #ffe85c; }
+.viewer-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,68,68,0.85);
+  border-radius: 100px;
+  padding: 5px 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: white;
+  backdrop-filter: blur(8px);
+}
+
+/* Ed quote floating */
+.ed-quote {
+  position: absolute;
+  left: 16px;
+  bottom: 90px;
+  max-width: 380px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: var(--r-md);
+  padding: 10px 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  pointer-events: none;
+}
+.eq-text {
+  font-size: 0.78rem;
+  color: rgba(0,0,0,0.8);
+  font-style: italic;
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+.eq-attr {
+  font-size: 0.6rem;
+  color: rgba(0,0,0,0.35);
+}
+.eq-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.52rem;
+  font-weight: 700;
+  color: var(--yellow);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.eq-text {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.9);
+  font-style: italic;
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+.eq-attr {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Won toast */
+.won-toast {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  background: var(--card);
+  border: 1px solid var(--yellow);
+  border-radius: var(--r-lg);
+  padding: 20px 28px;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  min-width: 200px;
+  z-index: 10;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 40px rgba(255,209,43,0.15);
+}
+.won-toast.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.won-emoji { font-size: 2rem; margin-bottom: 8px; }
+.won-name {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--yellow);
+}
+.won-sub { font-size: 0.75rem; color: var(--muted); margin-top: 3px; }
+
+/* Auction info bar */
+.auction-info-bar {
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: all;
+}
+.aib-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--r-sm);
+  background: var(--card);
+  border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.aib-details { flex: 1; min-width: 0; }
+.aib-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #111114;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.aib-sub {
+  font-size: 0.68rem;
+  color: rgba(0,0,0,0.4);
+  margin-top: 1px;
+}
+.aib-price {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--yellow);
+  flex-shrink: 0;
+}
+
+/* THE YELLOW BID BAR — the Whatnot signature, refined */
+.bid-bar {
+  background: var(--yellow);
+  padding: 13px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #000;
+  cursor: pointer;
+  pointer-events: all;
+  transition: background 0.15s;
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+.bid-bar:hover { background: #ffe85c; }
+.bid-bar:active { transform: scale(0.99); }
+.bid-bar-hint {
+  font-weight: 400;
+  font-size: 0.72rem;
+  opacity: 0.6;
+  margin-left: 2px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   WORK CAROUSEL (in stream)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.carousel-strip {
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  padding: 10px 12px;
+  pointer-events: all;
+}
+.carousel-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding: 0 2px;
+}
+.carousel-track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+
+.carousel-thumb {
+  flex-shrink: 0;
+  width: 130px;
+  scroll-snap-align: start;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.carousel-thumb:hover { border-color: var(--yellow); transform: translateY(-2px); }
+.carousel-thumb.active { border-color: var(--yellow); }
+
+.ct-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #FFF8DC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+  position: relative;
+}
+.ct-img img { width: 100%; height: 100%; object-fit: cover; }
+.ct-body { padding: 6px 8px; background: #ffffff; }
+.ct-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.65rem;
+  color: #111114;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+.ct-tag {
+  font-size: 0.58rem;
+  color: #888898;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ct-badge {
+  position: absolute;
+  top: 4px; right: 4px;
+  background: var(--yellow);
+  color: #000;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.48rem;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(20px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.lightbox.open { display: flex; }
+.lb-inner {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-lg);
+  max-width: 680px;
+  width: 100%;
+  overflow: hidden;
+  animation: lb-in 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes lb-in { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.lb-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  border-bottom: 1px solid var(--border);
+}
+.lb-img img { width: 100%; height: 100%; object-fit: cover; }
+.lb-body { padding: 20px 24px 24px; }
+.lb-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+.lb-desc {
+  font-size: 0.8rem;
+  color: var(--sub);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.lb-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.lb-tag {
+  background: var(--raised);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 3px 9px;
+  font-size: 0.65rem;
+  color: var(--sub);
+  font-family: 'Outfit', sans-serif;
+}
+.lb-tag.hi { background: rgba(255,209,43,0.1); border-color: rgba(255,209,43,0.25); color: var(--yellow); }
+.lb-footer { display: flex; justify-content: space-between; align-items: center; }
+.lb-close {
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  padding: 7px 14px;
+  font-size: 0.75rem;
+  color: var(--sub);
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.15s;
+}
+.lb-close:hover { border-color: var(--text); color: var(--text); }
+.lb-portfolio {
+  background: var(--yellow);
+  color: #000;
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 7px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.lb-portfolio:hover { background: #ffe85c; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RIGHT: CHAT PANEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.panel-right {
+  background: #ffffff;
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Bid summary at top of right panel */
+.bid-summary {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+  flex-shrink: 0;
+}
+.bs-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+.bs-cur-label { font-size: 0.65rem; color: var(--muted); font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 0.06em; }
+.bs-cur-val {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: var(--yellow);
+  line-height: 1;
+}
+.bs-max-label { font-size: 0.65rem; color: var(--muted); text-align: right; }
+.bs-max-val {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--green);
+}
+
+/* Progress bar */
+.prog-track {
+  background: var(--raised);
+  border-radius: 3px;
+  height: 4px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+.prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--yellow), #FF8C35);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+.prog-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.58rem;
+  color: var(--dim);
+  margin-bottom: 10px;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Bid ladder */
+.ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.rung {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 7px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: var(--surface);
+}
+.rung:first-child {
+  border-color: rgba(255,209,43,0.35);
+  background: var(--yellow-bg);
+}
+.rung:hover { border-color: var(--yellow); transform: translateX(2px); }
+.rung:hover .rung-arrow { opacity: 1; }
+.rung-left { display: flex; align-items: center; gap: 8px; }
+.rung-n {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.55rem;
+  color: var(--muted);
+  width: 14px;
+  font-weight: 600;
+}
+.rung-amt {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.rung-unit { font-weight: 400; font-size: 0.65rem; color: var(--muted); margin-left: 2px; }
+.rung-note { font-size: 0.6rem; color: var(--muted); margin-top: 1px; }
+.rung-arrow {
+  font-size: 0.65rem;
+  color: var(--yellow);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.rung:first-child .rung-arrow { opacity: 1; }
+
+.btn-watchlist {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  padding: 7px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--sub);
+  transition: all 0.15s;
+  font-family: 'Outfit', sans-serif;
+  margin-bottom: 8px;
+}
+.btn-watchlist:hover { border-color: var(--yellow); color: var(--yellow); }
+
+.countdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 0.65rem;
+  color: var(--muted);
+  font-family: 'Outfit', sans-serif;
+}
+.cd-val { color: var(--sub); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Chat scroll */
+.chat-scroll { flex: 1; overflow-y: auto; }
+.chat-scroll::-webkit-scrollbar { width: 3px; }
+.chat-scroll::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
+
+/* Rec bubble in chat */
+.rec-msg {
+  margin: 4px 14px 8px;
+  background: var(--yellow-bg);
+  border: 1px solid rgba(255,209,43,0.18);
+  border-radius: var(--r-md);
+  padding: 10px 12px;
+  animation: fadein 0.3s ease;
+}
+.rec-msg-header { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; }
+.rec-msg-av {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--yellow); color: #000;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 0.5rem; flex-shrink: 0;
+}
+.rec-msg-name { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.7rem; color: var(--yellow); }
+.rec-msg-role { font-size: 0.6rem; color: var(--muted); }
+.rec-msg-check { font-size: 0.6rem; color: var(--green); margin-left: auto; flex-shrink: 0; }
+.rec-msg-text { font-size: 0.73rem; color: var(--sub); line-height: 1.5; font-style: italic; }
+.rec-badge {
+  display: inline-block; background: var(--yellow); color: #000;
+  font-family: 'Outfit', sans-serif; font-size: 0.48rem; font-weight: 800;
+  padding: 1px 5px; border-radius: 3px; letter-spacing: 0.04em; margin-bottom: 5px;
+}
+
+/* Chat */
+.chat-msg { padding: 5px 14px; animation: fadein 0.2s ease; }
+@keyframes fadein { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+.chat-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px; }
+.cname {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+.cname.y { color: var(--yellow); }
+.cname.o { color: #FB923C; }
+.cname.b { color: var(--blue); }
+.cname.g { color: var(--green); }
+.mod-pill {
+  background: var(--muted);
+  color: var(--bg);
+  font-size: 0.5rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  font-family: 'Outfit', sans-serif;
+  flex-shrink: 0;
+}
+.ctext { font-size: 0.75rem; color: var(--sub); line-height: 1.4; }
+.ctext .mention { color: var(--blue); font-weight: 600; }
+.ctext.sys { color: var(--dim); font-size: 0.68rem; font-style: italic; }
+
+.bid-msg {
+  padding: 6px 14px;
+  background: var(--yellow-bg);
+  border-left: 2px solid var(--yellow);
+  margin: 2px 0;
+  animation: fadein 0.2s ease;
+}
+.bid-msg-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--yellow);
+}
+
+/* Chat input */
+.chat-input-wrap {
+  padding: 10px 14px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.chat-input {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 18px;
+  padding: 8px 14px;
+  font-size: 0.78rem;
+  color: var(--text);
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.15s;
+}
+.chat-input::placeholder { color: var(--muted); }
+.chat-input:focus { border-color: rgba(255,209,43,0.4); }
+
+/* Rec feed posts */
+.rec-post {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.rec-post:hover { background: rgba(255,255,255,0.02); }
+.rp-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-bottom: 8px;
+}
+.rp-av {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--raised);
+  border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800; font-size: 0.55rem;
+  color: var(--sub);
+  flex-shrink: 0;
+}
+.rp-meta { flex: 1; min-width: 0; }
+.rp-name {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--text);
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+.rp-badge {
+  font-size: 0.55rem;
+  color: var(--green);
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  flex-shrink: 0;
+}
+.rp-role { font-size: 0.62rem; color: var(--muted); margin-top: 1px; }
+.rp-preview, .rp-full {
+  font-size: 0.74rem;
+  color: var(--sub);
+  line-height: 1.55;
+  font-style: italic;
+}
+.rp-full { margin-top: 4px; }
+.rp-expand {
+  background: none;
+  border: none;
+  color: var(--yellow);
+  font-size: 0.65rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 5px 0 0;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+.rp-expand:hover { opacity: 1; }
+
+/* Stream description bar */
+.stream-desc-bar {
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.sdb-lot {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #C9A000;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.sdb-body {
+  font-size: 0.72rem;
+  color: #44444f;
+  line-height: 1.55;
+}
+.sdb-price {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #C9A000;
+  align-self: flex-end;
+}
+
+/* Fun Facts */
+.fun-facts-block {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: var(--r-md);
+  padding: 12px;
+  margin-bottom: 10px;
+}
+.fun-fact-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+.fun-fact-item:first-of-type { margin-top: 6px; padding-top: 0; border-top: none; }
+.fun-fact-icon { font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
+.fun-fact-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.67rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* AI Chat Widget */
+.ai-chat-block {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.ai-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: #fafafa;
+}
+.ai-chat-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: pulse 2s infinite;
+}
+.ai-chat-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text);
+  flex: 1;
+  letter-spacing: 0.02em;
+}
+.ai-chat-badge {
+  background: var(--teal);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.48rem;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+}
+.ai-chat-feed {
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ai-chat-feed::-webkit-scrollbar { width: 3px; }
+.ai-chat-feed::-webkit-scrollbar-track { background: transparent; }
+.ai-chat-feed::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 2px; }
+.ai-msg { display: flex; flex-direction: column; gap: 2px; }
+.ai-msg-user .ai-msg-text {
+  align-self: flex-end;
+  background: var(--yellow);
+  color: #111;
+  font-size: 0.67rem;
+  padding: 6px 9px;
+  border-radius: 10px 10px 2px 10px;
+  max-width: 90%;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.4;
+}
+.ai-msg-bot .ai-msg-text {
+  background: #f5f5f7;
+  color: #333;
+  font-size: 0.67rem;
+  padding: 7px 9px;
+  border-radius: 2px 10px 10px 10px;
+  max-width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.5;
+}
+.ai-msg-typing .ai-msg-text {
+  background: #f5f5f7;
+  color: #999;
+  font-size: 0.67rem;
+  padding: 7px 9px;
+  border-radius: 2px 10px 10px 10px;
+  font-style: italic;
+}
+.ai-chat-input-row {
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  background: #fafafa;
+}
+.ai-chat-input {
+  flex: 1;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  padding: 6px 9px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.67rem;
+  color: var(--text);
+  background: #fff;
+  outline: none;
+}
+.ai-chat-input:focus { border-color: var(--teal); }
+.ai-chat-send {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+.ai-chat-send:hover { opacity: 0.85; }
+.ai-chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Read more toggle */
+.cm-quote {
+  font-size: 0.7rem;
+  color: #222;
+  line-height: 1.5;
+  font-style: italic;
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 3px;
+}
+.rcx-full {
+  font-size: 0.67rem;
+  color: #555;
+  line-height: 1.55;
+  font-family: 'DM Sans', sans-serif;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.cm-role {
+  font-size: 0.52rem;
+  color: #aaa;
+  font-weight: 400;
+  margin-left: 2px;
+  font-family: 'DM Sans', sans-serif;
+}
+.cm-read-more {
+  background: none;
+  border: none;
+  color: var(--teal);
+  font-size: 0.6rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 0 0;
+  display: block;
+}
+.cm-read-more:hover { opacity: 0.75; }
+
+/* Chat message styles */
+.chat-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.cm-av {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.55rem;
+  letter-spacing: 0.02em;
+}
+.cm-body {
+  flex: 1;
+  min-width: 0;
+}
+.cm-name {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.65rem;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.cm-li {
+  font-weight: 500;
+  font-size: 0.55rem;
+  color: var(--teal);
+  margin-left: 4px;
+}
+.cm-text {
+  font-size: 0.7rem;
+  color: #44444f;
+  line-height: 1.45;
+}
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background: var(--card);
+  border: 1px solid var(--yellow);
+  color: var(--yellow);
+  border-radius: var(--r-sm);
+  padding: 9px 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 999;
+  white-space: nowrap;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+</style>
+</head>
+<body>
+
+<!-- ━━━ NAV ━━━ -->
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-logo-mark">🎪</div>
+    whatnot
+    <span class="nav-logo-sub">but make it Carlin</span>
+  </div>
+  <div class="nav-sep"></div>
+  <div class="nav-links">
+    <a class="nav-link" href="#">Home</a>
+    <a class="nav-link" href="#">Browse</a>
+  </div>
+  <div class="nav-right">
+    <div class="live-badge"><div class="live-dot"></div>Live</div>
+    <a class="btn-cta-nav" href="mailto:carlinguarneri@gmail.com?subject=Let's%20Talk%20—%20Creative%20Director%20Role&body=Hi%20Carlin%2C%0A%0AI%20came%20across%20your%20profile%20and%20would%20love%20to%20connect.%0A%0A" style="text-decoration:none;">Contact</a>
+    <div class="nav-avatar" style="background:#ffffff;border:2px solid rgba(79,209,192,0.5);"><img src="data:image/png;base64,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" style="width:18px;height:auto;" alt="CG"/></div>
+  </div>
+</nav>
+
+<!-- ━━━ LAYOUT ━━━ -->
+<div class="layout">
+
+  <!-- ━━━ LEFT RAIL ━━━ -->
+  <aside class="rail-left">
+
+    <!-- Seller card -->
+    <div class="seller-card">
+      <div class="seller-avatar-lg" style="background:#ffffff;border:2px solid rgba(79,209,192,0.5);"><img src="data:image/png;base64,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" style="width:34px;height:auto;" alt="CG"/></div>
+      <div class="seller-name-lg">Carlin Guarneri</div>
+      <div class="seller-title-lg">Creative Director · Brand Architect · AI Builder · Lover of Pizza & Dogs</div>
+      <div class="seller-stars">
+        <span class="star">★★★★★</span>
+        <span>4.9</span>
+        <span style="color:var(--muted)">· 7 reviews</span>
+      </div>
+      <div class="viewer-count">
+        <div class="live-dot" style="background:var(--red)"></div>
+        <span id="viewerCt">1,247</span> watching
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-block">
+      <div class="stats-label">By the numbers</div>
+      <div class="stat-row">
+        <div class="stat-val">50+</div>
+        <div class="stat-lbl">Major brands touched</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-val">10+</div>
+        <div class="stat-lbl">Industry verticals</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-val">20+</div>
+        <div class="stat-lbl">Years leading creative</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-val">4×</div>
+        <div class="stat-lbl">Sales lift, experiential</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-val" style="font-size:0.8rem;color:var(--green)">AI</div>
+        <div class="stat-lbl">Fine-tuned LLM from scratch</div>
+      </div>
+    </div>
+
+    <!-- Brands -->
+    <div class="brands-block">
+      <div class="stats-label">Brands</div>
+      <div class="brand-chips">
+        <span class="brand-chip" style="border-color:rgba(255,209,43,0.35);color:var(--text);">Unilever</span>
+        <span class="brand-chip" style="border-color:rgba(255,209,43,0.35);color:var(--text);">Walmart</span>
+        <span class="brand-chip" style="border-color:rgba(255,209,43,0.35);color:var(--text);">Heineken</span>
+        <span class="brand-chip" style="border-color:rgba(255,209,43,0.35);color:var(--text);">Costco</span>
+        <span class="brand-chip">Sharpie</span>
+        <span class="brand-chip">Rubbermaid</span>
+        <span class="brand-chip">Coleman</span>
+        <span class="brand-chip">Folgers</span>
+        <span class="brand-chip">Jif</span>
+        <span class="brand-chip">Smucker's</span>
+        <span class="brand-chip">Bayer</span>
+        <span class="brand-chip">Diageo</span>
+        <span class="brand-chip">Subway</span>
+        <span class="brand-chip">Dove</span>
+        <span class="brand-chip">AXE</span>
+        <span class="brand-chip">Trojan</span>
+        <span class="brand-chip">PIMCO</span>
+        <span class="brand-chip">+ 30 more</span>
+      </div>
+    </div>
+
+    <!-- Verticals -->
+    <div class="verticals-block">
+      <div class="stats-label">Verticals</div>
+      <div class="vertical-item"><div class="vertical-dot"></div>Beauty & Personal Care</div>
+      <div class="vertical-item"><div class="vertical-dot"></div>eCommerce & Shopper</div>
+      <div class="vertical-item"><div class="vertical-dot"></div>Spirits & Beverage</div>
+      <div class="vertical-item"><div class="vertical-dot"></div>QSR & Food</div>
+      <div class="vertical-item"><div class="vertical-dot"></div>Pharma & Healthcare</div>
+      <div class="vertical-item"><div class="vertical-dot"></div>Financial Services</div>
+      <div class="vertical-item"><div class="vertical-dot"></div>Apparel & Streetwear</div>
+      <div class="vertical-item"><div class="vertical-dot"></div>AI & Tech</div>
+    </div>
+
+
+    <!-- AI Chat Widget -->
+    <div class="ai-chat-block">
+      <div class="ai-chat-header">
+        <div class="ai-chat-dot"></div>
+        <span class="ai-chat-title">Ask anything about Carlin</span>
+        <span class="ai-chat-badge">AI</span>
+      </div>
+      <div class="chat-scroll" id="aiChatFeed" style="max-height:180px;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px;">
+        <div class="ai-msg ai-msg-bot">
+          <span class="ai-msg-text">Ed Crump, Co-Founder &amp; Patent Holder at Amazon Alexa, said: <em>"I met someone just like Bezos and how he thinks — and this is her."</em><br><br>Ask me anything about Carlin's work, background, or what makes her different. <a href="#" onclick="showThoughtPiece(event)" style="color:var(--teal);text-decoration:none;font-weight:600;">Like George R.R. Martin? Read her thought piece on Acceleration Theory →</a></span>
+        </div>
+      </div>
+      <div class="ai-chat-input-row">
+        <input class="ai-chat-input" id="aiChatInput" type="text" placeholder="What has she built? Who has she worked with?" maxlength="200" />
+        <button class="ai-chat-send" id="aiChatSend" onclick="sendAIChat()">↑</button>
+      </div>
+    </div>
+
+    <!-- Fun Facts -->
+    <div class="fun-facts-block">
+      <div class="stats-label">Fun Facts</div>
+      <div class="fun-fact-item">
+        <span class="fun-fact-icon">🐉</span>
+        <span class="fun-fact-text">Wrote a unified theory of AI acceleration through the lore of <em>A Song of Ice &amp; Fire</em> — with an ADHD detour. <a href="#" onclick="showThoughtPiece(event)" style="color:var(--teal);font-weight:600;text-decoration:none;">Read it →</a></span>
+      </div>
+      <div class="fun-fact-item">
+        <span class="fun-fact-icon">🕺</span>
+        <span class="fun-fact-text">Once scared the living daylights out of Lady Gaga while dancing at a club. Unintentional. Zero regrets.</span>
+      </div>
+      <div class="fun-fact-item">
+        <span class="fun-fact-icon">🦶</span>
+        <span class="fun-fact-text">Surprisingly good at writing with her feet. Make of that what you will.</span>
+      </div>
+      <div class="fun-fact-item">
+        <span class="fun-fact-icon">🪓</span>
+        <span class="fun-fact-text">Into bushcraft and survivalism. Could probably build her own shelter and survive in the woods for a few days. Probably. Don't count on it.</span>
+      </div>
+    </div>
+    <a class="see-work-btn" href="https://carlin.myportfolio.com" target="_blank">See the Work →</a>
+
+  </aside>
+
+  <!-- ━━━ STREAM CENTER ━━━ -->
+  <main class="stream-col">
+    <div class="stream-wrap">
+      <canvas id="streamCanvas"></canvas>
+
+      <div class="stream-overlay">
+
+        <!-- Top bar -->
+        <div class="stream-top-bar">
+          <div class="seller-pill-sm">
+            <div class="spill-avatar" style="background:transparent;"><img src="data:image/png;base64,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" style="width:20px;height:auto;" alt="CG"/></div>
+            <div>
+              <div class="spill-name">carlin.guarneri ✦</div>
+              <div class="spill-sub">Creative Director · Brand Architect · Lover of Pizza & Dogs</div>
+            </div>
+          </div>
+          <div class="stream-badges">
+            <a href="https://www.linkedin.com/in/carlinguarneri/" target="_blank" class="btn-follow-stream" style="text-decoration:none;">Follow</a>
+            <div class="viewer-pill">
+              <div class="live-dot"></div>
+              <span id="viewerCt2">1,247</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Won toast -->
+        <div class="won-toast" id="wonToast">
+          <div class="won-emoji">⚡</div>
+          <div class="won-name" id="wonText">You bid $180,000!</div>
+          <div class="won-sub">Top bidder</div>
+        </div>
+
+        <!-- Work Carousel -->
+
+
+        <!-- Bottom -->
+        <div>
+          <div class="stream-desc-bar">
+            <div class="sdb-lot">Lot #001 · Associate Creative Director</div>
+            <div class="sdb-body">20+ years of integrated marketing, shopper, ecomm, digital, experiential, and entrepreneurship — now fully enhanced with AI. Led campaigns for major CPG brands, designed immersive retail environments at scale, built a DTC brand from scratch, and currently developing a 3D productivity platform powered by a custom AI coach trained from scratch. The obstacle is the way. The ego is the enemy. Work hard, play hard — at the same time.</div>
+            <div class="sdb-price" id="streamPrice">$174,999</div>
+          </div>
+          <a class="bid-bar" id="bidBarBtn" href="mailto:carlinguarneri@gmail.com?subject=Let%27s%20Talk%20%E2%80%94%20Creative%20Director%20Role&body=Hi%20Carlin%2C%0A%0AI%20came%20across%20your%20profile%20and%20would%20love%20to%20connect.%0A%0A" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">
+            ⚡ Place Bid — Contact Carlin
+            <span class="bid-bar-hint">· Let's talk</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ━━━ RIGHT PANEL ━━━ -->
+  <aside class="panel-right">
+
+    <!-- Bid header -->
+    <div class="bid-summary">
+      <div class="bs-row">
+        <div>
+          <div class="bs-cur-label">Current Bid</div>
+          <div class="bs-cur-val" id="curBid">$174,999</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="bs-max-label">Buy It Now</div>
+          <div class="bs-max-val">$225,000</div>
+        </div>
+      </div>
+      <div class="prog-track">
+        <div class="prog-fill" id="progFill" style="width:0%"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px;">
+        <span style="font-size:0.58rem;color:var(--dim);font-family:'Outfit',sans-serif;" id="progPct">0% to ceiling</span>
+        <span style="font-size:0.58rem;color:var(--muted);font-family:'Outfit',sans-serif;">&#9203; <span id="cdVal">6d 23h 59m</span></span>
+      </div>
+      <div class="ladder" id="ladder" style="display:none;"></div>
+    </div>
+
+    <!-- Chat header -->
+    <div style="padding:9px 14px;border-bottom:1px solid rgba(0,0,0,0.07);flex-shrink:0;display:flex;align-items:center;justify-content:space-between;background:#fff;">
+      <span style="font-family:'Outfit',sans-serif;font-size:0.65rem;font-weight:700;color:#111;letter-spacing:0.06em;text-transform:uppercase;">Chat</span>
+      <span style="font-size:0.6rem;color:#2a9d8f;font-family:'Outfit',sans-serif;font-weight:600;">● Live</span>
+    </div>
+
+    <!-- Reviews feed — all inline styles, no class dependencies -->
+    <div style="flex:1;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:0">
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px;background:rgba(255,209,43,0.07);border:1px solid rgba(255,209,43,0.25);border-radius:8px;margin-bottom:4px">
+      <div style="width:30px;height:30px;border-radius:50%;background:#f5c900;color:#000;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">EC</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Ed Crump<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span><span style="font-size:0.5rem;font-weight:700;color:#b8860b;background:rgba(255,209,43,0.2);padding:1px 5px;border-radius:3px;margin-left:4px;">✦ Featured</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Featured</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"I met someone just like Bezos and how he thinks — and this is her."</div>
+        
+        
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#fef3e2;color:#e07b00;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">DA</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Dr. Alexa D'Agostino<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Fractional CMO · 4+ yrs</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"Any company or founder who gets the chance to work with her will be incredibly lucky."</div>
+        <div id="rf1" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">I have had the chance to work with Carlin for more than four years, and I can say without hesitation that she is one of the most special people I have worked with. Carlin served as my Creative Director, and she brought an incredible mix of talent, energy, and heart to the role. She has a sharp creative eye and a real gift for building brands that stand out. Her work in the CPG space is especially strong, but her creativity translates across any industry. What always stood out to me was her mindset — a constant drive to improve. She is always pushing herself and the people around her to do better work. That kind of energy is rare. Beyond the work, Carlin is simply an amazing human. Funny, kind, thoughtful, and the type of person who makes every team better just by being part of it.</div>
+        <button onclick="rfToggle(1)" id="rfb1" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#f0eaff;color:#7c3aed;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">TM</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Tonia Marra<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Brand Growth · 3 exits</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"She has a rare ability to combine strong strategic thinking with thoughtful, high-quality creative execution."</div>
+        <div id="rf2" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">Carlin is an exceptional creative and strategist, and truly one of those people who elevates every project and team she's part of. She has a rare ability to combine strong strategic thinking with thoughtful, high-quality creative execution, always keeping both the big picture and the details in focus. Beyond her talent, Carlin is an absolute pleasure to work with — collaborative, reliable, and deeply invested in doing things the right way. Any team would be lucky to work with Carlin. She makes the work better, the process smoother, and the people around her stronger.</div>
+        <button onclick="rfToggle(2)" id="rfb2" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#e8f5f3;color:#2a9d8f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">AA</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Aaron Ayala<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">AI Agency Partner · Client</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"She kept the investors informed with full transparency throughout the process without having to be asked."</div>
+        <div id="rf3" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">I partnered with Carlin in a real estate deal and like many deals, unexpected obstacles came up during the renovation. She never flinched. Carlin's work ethic navigated issues that would have tanked the deal with many people. She dug in, managed costs, put in her own funds, and upped the sales price at closing in December 2022 — a very tough seller environment. She kept the investors informed with full transparency throughout the process without having to be asked. I look forward to partnering again.</div>
+        <button onclick="rfToggle(3)" id="rfb3" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#e8f0ff;color:#4c6ef5;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">HP</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Heidi Pliam<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Real estate client</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"I would not hesitate to place money again with Carlin — highly trustworthy in all the ways."</div>
+        <div id="rf4" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">Carlin did a fantastic job overseeing a real estate investment for a complete home renovation. Not only did I make a great return on my money during a super-challenging time in that industry, she did all the things I look for in an asset manager — smart purchasing, due diligence, keeping investors informed and seeking input in appropriate ways. I would not hesitate to place money again with Carlin because I know she stays on top of things, handles challenges with immediate action, and is highly trustworthy in all the ways.</div>
+        <button onclick="rfToggle(4)" id="rfb4" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#f0eaff;color:#7c3aed;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">CD</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Chris DePietro<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Art Director · Direct report</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"She made it a priority to create a team among the design staff — Carlin is truly one of the good ones."</div>
+        <div id="rf5" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">Carlin is a fun, energetic, and witty creative mind. She's very quick to come up with an idea or solution to various challenging situations. As the design team lead she was always available to answer questions and she made it a priority to create a team among the design staff. I've worked with many people over the years and Carlin is truly one of the good ones. She'll be a great asset to any creative team.</div>
+        <button onclick="rfToggle(5)" id="rfb5" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#e8f5f3;color:#2a9d8f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">AJ</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Avery Jackson<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Senior Designer · Direct report</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"She values the growth and success of each individual on her team — her positivity is contagious."</div>
+        <div id="rf6" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">I had the immense pleasure of working with Carlin at Oliver Agency where she managed and mentored me on the Bayer Pharma account. She is extremely talented and can manage any project from concept to creation. Carlin is not only a great designer, but she values the growth and success of each individual on her team. Her positivity is contagious and her passion for design really shows in her work. Any creative department would be lucky to have her!</div>
+        <button onclick="rfToggle(6)" id="rfb6" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#fff0f0;color:#e03030;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">EW</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Erin Walsh<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Senior Copywriter · Direct report</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"One of those rare creatives who looks beyond the brief to understand the client and their business needs."</div>
+        <div id="rf7" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">I had the pleasure of working with Carlin as my manager at the OLIVER agency. Beyond being a highly skilled art director, Carlin is one of those rare creatives who looks beyond the creative brief to understand the client and their business needs. Throughout my time working with her, she always challenged and inspired me to go outside my comfort zone. I learned so much from her and any person would be lucky to be under her creative direction.</div>
+        <button onclick="rfToggle(7)" id="rfb7" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#fff0f0;color:#e03030;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">AR</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Aaron Rauth<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Art Director · Direct report</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"Carlin consistently operates two steps ahead and will keep the team laughing through the process."</div>
+        <div id="rf8" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">I had the pleasure of working under Carlin for over a year. Her approach is work hard play hard — often at the same time. Carlin's creative vision and guidance absolutely elevated the visuals and strategy to show the client just how exciting their products could be in shopper marketing. Carlin consistently operates two steps ahead and can be intense when the pressure is on, but will keep the team laughing through the process.</div>
+        <button onclick="rfToggle(8)" id="rfb8" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#fef3e2;color:#e07b00;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">EM</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Elyse Marks<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Managing Director · Peer</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"Her attention to detail did not waver under pressure — flawless, high quality designs every time."</div>
+        <div id="rf9" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">Carlin is extremely talented, hard working and dedicated to her role. I worked with her on an intense and highly demanding client whom she handled in stride. Her attention to detail did not waver under pressure and she produced flawless, high quality designs of what the client was looking for. Carlin also did a fantastic job client facing and was able to present the design rationale and thinking without hesitation. I hope to work with her again in the future!</div>
+        <button onclick="rfToggle(9)" id="rfb9" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#e8f5f3;color:#2a9d8f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">HH</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Holly Hansen<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Sr. Project Manager · Peer</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"Carlin had a 'roll up your sleeves and get it done' attitude with any team she worked with."</div>
+        <div id="rf10" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">Carlin started freelancing at Colangelo and was an immediate standout. We hire so many freelancers who are not always up to the task of our challenging and fast-paced environment — but Carlin had a 'roll up her sleeves and get it done' attitude with any team she worked with. She was extremely successful during her 6+ year run. Most notable: GLAAD honors recognition for best LGBT inclusive advertising in 2011 for Rikk Vodka. She is a team player with incredible attention to detail who sees the big picture from commencement to conclusion.</div>
+        <button onclick="rfToggle(10)" id="rfb10" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#e8f0ff;color:#4c6ef5;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">LC</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Lyndsay Coppola<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Sr. Director · Peer</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"She is not afraid to question briefs — and always makes sure objectives are met."</div>
+        <div id="rf11" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">Carlin is a detail oriented go-getter in all areas of her profession. She excels with design and leadership and empowers those under her to bring out the best of their abilities. She is not afraid to question briefs and works very closely with her counterparts to make sure that objectives and needs are met. She is an asset and valued team player and I look forward to working with her again soon.</div>
+        <button onclick="rfToggle(11)" id="rfb11" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#e8f5f3;color:#2a9d8f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">DH</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Dave Haller<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Creative Leader · Direct report</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"She always made sure I understood the big picture behind the work I was creating."</div>
+        <div id="rf12" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">As my Senior Art Director, Carlin was a great mentor and leader. She always made sure I understood the big picture behind the work I was creating and knew when to give me greater responsibility as I became more experienced. Even outside my team, Carlin mentored other juniors and kept the office a fun place to work.</div>
+        <button onclick="rfToggle(12)" id="rfb12" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#fff0f0;color:#e03030;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">MT</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Michael Toderico<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Principal CD · Manager</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"Carlin's technical ability enables her to 'make the donuts' — and manage the making of them."</div>
+        <div id="rf13" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">Carlin is a great Art Director and overall Creative professional. She was an integral part of my Creative team for many years. Carlin's technical ability and creativity enable her to 'make the donuts' — while her attention to detail and easy personality makes her ideal for managing 'the making of the donuts.' I truly look forward to working with her again.</div>
+        <button onclick="rfToggle(13)" id="rfb13" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#f0eaff;color:#7c3aed;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">OB</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Owen Boland<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Executive CD · Manager</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"She has the rare ability to be a friend to all yet still command respect in the work place."</div>
+        <div id="rf14" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">Carlin is top notch Art Director, a reliable manager and an overall great creative to work with. She's got a great attribute that brings levity and joy to the most stressful of work environments. Carlin has the rare ability to be a friend to all yet still be able to command respect in the work place. She has all the making of being a great Creative leader and I can only hope to cross paths with her again someday.</div>
+        <button onclick="rfToggle(14)" id="rfb14" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+<div style="display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)">
+      <div style="width:30px;height:30px;border-radius:50%;background:#e8f0ff;color:#4c6ef5;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;font-family:Outfit,sans-serif;flex-shrink:0">MD</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:Outfit,sans-serif;font-weight:700;font-size:0.65rem;color:#111">Matt Durand<span style="font-size:0.52rem;font-weight:500;color:#2a9d8f;margin-left:4px">✓ LinkedIn</span></div>
+        <div style="font-size:0.52rem;color:#aaa;font-family:DM Sans,sans-serif;margin-top:1px">Senior Designer · Peer</div>
+        <div style="font-size:0.69rem;color:#222;font-style:italic;line-height:1.5;font-family:DM Sans,sans-serif;margin-top:3px">"She presents her work with a confident, intelligent tone — a valuable addition to any team."</div>
+        <div id="rf15" style="display:none;font-size:0.65rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.07)">Carlin has a sharp eye for the details in design. Her strong organizational skills allow her to complete quality projects on tight deadlines. Carlin is a hard worker, yet offers up a great sense of humor that helps get the team through late night work hours. She knows how to ask the right questions and presents her work with a confident, intelligent tone and insight. In short, Carlin would be a valuable addition to any team.</div>
+        <button onclick="rfToggle(15)" id="rfb15" style="background:none;border:none;color:#2a9d8f;font-size:0.6rem;font-family:Outfit,sans-serif;font-weight:600;cursor:pointer;padding:3px 0 0;display:block">Read more ↓</button>
+      </div>
+    </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- Thought Piece Modal -->
+<div id="thoughtModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:2000;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:16px;max-width:480px;width:100%;padding:28px 28px 24px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.25);">
+    <button onclick="closeThoughtPiece()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:#888;">✕</button>
+    <div style="font-size:0.58rem;font-family:'Outfit',sans-serif;font-weight:700;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">Thought Piece · Medium · Feb 2026</div>
+    <h2 style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;color:#111;line-height:1.3;margin-bottom:10px;">The Acceleration Threshold: What A Song of Ice and Fire Tells Us About AI</h2>
+    <p style="font-size:0.75rem;color:#555;font-family:'DM Sans',sans-serif;line-height:1.65;margin-bottom:6px;"><em>A unified theory of civilizational collapse, from Westeros to the present moment.</em></p>
+    <p style="font-size:0.75rem;color:#444;font-family:'DM Sans',sans-serif;line-height:1.65;margin-bottom:18px;">There's a pattern buried in George R.R. Martin's world that most readers miss. We get distracted by the politics, the battles, the dragons. But underneath all of it may be a systems-level story about what happens when capability outpaces understanding. I think the Long Night wasn't a war. It was a threshold event. And I think we're approaching one right now...</p>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <span style="font-size:0.65rem;color:#888;font-family:'DM Sans',sans-serif;">18 min read</span>
+      <span style="color:#ddd;">·</span>
+      <span style="font-size:0.65rem;color:#888;font-family:'DM Sans',sans-serif;">Game of Thrones · AI · Fan Theory · Tech</span>
+    </div>
+    <a href="https://medium.com/@carlinguarneri/the-acceleration-threshold-what-a-song-of-ice-and-fire-tells-us-about-ai-0831d7fd4171" target="_blank" style="display:block;background:#111;color:#fff;text-align:center;padding:11px 0;border-radius:10px;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.75rem;text-decoration:none;letter-spacing:0.02em;">Read on Medium →</a>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lb-inner" id="lbInner">
+    <div class="lb-img" id="lbImg"></div>
+    <div class="lb-body">
+      <div class="lb-title" id="lbTitle"></div>
+      <div class="lb-desc" id="lbDesc"></div>
+      <div class="lb-tags" id="lbTags"></div>
+      <div class="lb-footer">
+        <button class="lb-close" onclick="document.getElementById('lightbox').classList.remove('open')">✕ Close</button>
+        <a class="lb-portfolio" href="https://carlin.myportfolio.com" target="_blank">Full Portfolio →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toastEl"></div>
+
+<script>
+// ━━━ CANVAS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const streamCanvas = document.getElementById('streamCanvas');
+const ctx = streamCanvas.getContext('2d');
+function resize() { streamCanvas.width = streamCanvas.offsetWidth; streamCanvas.height = streamCanvas.offsetHeight; }
+resize();
+window.addEventListener('resize', resize);
+
+let T = 0;
+
+const ORB = [
+  { x: 0.25, y: 0.45, r: 280, c: '255,140,50',  s: 1.1 },
+  { x: 0.72, y: 0.55, r: 240, c: '80,140,255',   s: 0.9 },
+  { x: 0.5,  y: 0.15, r: 200, c: '255,209,43',   s: 1.3 },
+  { x: 0.15, y: 0.82, r: 160, c: '52,211,153',   s: 0.7 },
+];
+
+function drawCanvas() {
+  T += 0.006;
+  const W = streamCanvas.width, H = streamCanvas.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, W, H);
+
+  // Orbs
+  ORB.forEach((o, i) => {
+    const ox = (o.x + Math.sin(T * o.s + i * 1.4) * 0.12) * W;
+    const oy = (o.y + Math.cos(T * o.s + i * 1.1) * 0.09) * H;
+    const g = ctx.createRadialGradient(ox, oy, 0, ox, oy, o.r * (W / 960));
+    g.addColorStop(0, `rgba(${o.c},0.09)`);
+    g.addColorStop(0.5, `rgba(${o.c},0.03)`);
+    g.addColorStop(1, 'transparent');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+  });
+
+  // Fine grid
+  ctx.strokeStyle = 'rgba(0,0,0,0.06)';
+  ctx.lineWidth = 1;
+  const G = 52;
+  for (let x = 0; x < W; x += G) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+  for (let y = 0; y < H; y += G) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+  // Monogram watermark
+  ctx.save();
+  ctx.globalAlpha = 0.08;
+  ctx.font = `900 ${Math.min(W, H) * 0.38}px Outfit, sans-serif`;
+  ctx.fillStyle = '#000000';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('CG', W / 2, H / 2);
+  ctx.restore();
+
+  requestAnimationFrame(drawCanvas);
+}
+drawCanvas();
+
+// ━━━ WORK DATA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const WORK = [
+  {
+    icon: '🛒', title: 'Bayer — Amazon A+ Content',
+    desc: 'Commerce-native creative built to convert on Amazon\'s marketplace. High-stakes Bayer brand standards met at retailer scale — modular, A/B-ready, and built within the in-house Unilever U-Studio model.',
+    tags: ['Commerce', 'Marketplace', 'Pharma'], hi: 'Most Relevant ↗'
+  },
+  {
+    icon: '🏗️', title: '3D Experiential Environment',
+    desc: 'CPG brand environment designed in Cinema 4D for physical installation at Walmart and Costco. Full spatial concept through production-ready renders. Contributed to a measured 4× sales lift.',
+    tags: ['Cinema 4D', 'Retail Scale', 'CPG'], hi: '4× Sales Lift', hiColor: 'var(--green)', hiBg: 'rgba(52,211,153,0.1)', hiBorder: 'rgba(52,211,153,0.2)'
+  },
+  {
+    icon: '👕', title: 'Tone Def Collective',
+    desc: 'Independent streetwear brand built end-to-end — brand strategy, visual identity, apparel design, and eCommerce launch. No client. No brief. Full founder build.',
+    tags: ['Brand Identity', 'eCommerce', 'Streetwear'], hi: 'Founder-Built', hiColor: 'var(--blue)', hiBg: 'rgba(96,165,250,0.1)', hiBorder: 'rgba(96,165,250,0.2)'
+  },
+  {
+    icon: '🤖', title: 'NeuroQuest — AI Productivity Platform',
+    desc: 'Spatial productivity app built in Unity with a custom AI coach (Lumen) fine-tuned on Llama 3.2 3B using LoRA and MLX. Thousands of structured training examples. Built solo.',
+    tags: ['Unity', 'Llama 3.2', 'LoRA / MLX'], hi: 'Founder-Built', hiColor: 'var(--blue)', hiBg: 'rgba(96,165,250,0.1)', hiBorder: 'rgba(96,165,250,0.2)'
+  },
+  {
+    icon: '💊', title: 'Bayer Brand System',
+    desc: 'Comprehensive digital brand system across Bayer\'s consumer health portfolio — from visual standards to platform-specific execution at scale.',
+    tags: ['Pharma', 'Digital', 'Brand System'], hi: 'Unilever U-Studio'
+  }
+];
+
+function openLightbox(i) {
+  const w = WORK[i];
+  const box = document.getElementById('lightbox');
+  document.getElementById('lbImg').innerHTML = w.icon;
+  document.getElementById('lbTitle').textContent = w.title;
+  document.getElementById('lbDesc').textContent = w.desc;
+  const tags = document.getElementById('lbTags');
+  tags.innerHTML = w.tags.map(t => `<span class="lb-tag">${t}</span>`).join('') +
+    (w.hi ? `<span class="lb-tag hi" style="${w.hiColor ? `color:${w.hiColor};background:${w.hiBg};border-color:${w.hiBorder}` : ''}">${w.hi}</span>` : '');
+  box.classList.add('open');
+}
+function closeLightbox(e) {
+  if (e.target === document.getElementById('lightbox')) {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+}
+
+// ━━━ BID STATE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+let bid = 174999;
+const STEP = 5000, MAX = 225000, MIN = 175000;
+const fmt = n => '$' + n.toLocaleString();
+const pct = n => Math.max(0, Math.min(100, Math.round(((n - MIN) / (MAX - MIN)) * 100)));
+const NOTES = ['Next up — place now', 'Getting warmer 🔥', 'Now we\'re talking', 'Approaching ceiling'];
+
+function renderLadder() {
+  const el = document.getElementById('ladder');
+  el.innerHTML = '';
+  for (let i = 0; i < 4; i++) {
+    const amt = bid + STEP * (i + 1);
+    if (amt > MAX) break;
+    const d = document.createElement('div');
+    d.className = 'rung';
+    d.innerHTML = `
+      <div class="rung-left">
+        <div class="rung-n">${String(i + 1).padStart(2,'0')}</div>
+        <div>
+          <div class="rung-amt">${fmt(amt)}<span class="rung-unit">/yr</span></div>
+          <div class="rung-note">${NOTES[i]} · ${pct(amt)}% to ceiling</div>
+        </div>
+      </div>
+      <div class="rung-arrow">BID ⚡</div>`;
+    d.addEventListener('click', () => placeBid(amt));
+    el.appendChild(d);
+  }
+  const p = pct(bid);
+  document.getElementById('progFill').style.width = p + '%';
+  document.getElementById('progPct').textContent = p + '% to ceiling';
+}
+
+function placeBid(amount) {
+  bid = amount || (bid + STEP);
+  const next = bid + STEP;
+  document.getElementById('curBid').textContent = fmt(bid);
+  document.getElementById('streamPrice').textContent = fmt(bid);
+  document.getElementById('bidBarBtn').innerHTML = `⚡ Place Bid — ${fmt(next)}/yr <span class="bid-bar-hint">· 6d 23h remaining</span>`;
+  renderLadder();
+
+  const w = document.getElementById('wonToast');
+  document.getElementById('wonText').textContent = `You bid ${fmt(bid)}!`;
+  w.classList.add('show');
+  setTimeout(() => w.classList.remove('show'), 2200);
+
+  // bid logged
+  toast(`🔥 Top bidder at ${fmt(bid)}/yr`);
+}
+renderLadder();
+
+// ━━━ COUNTDOWN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+let secs = 6 * 86400 + 23 * 3600 + 59 * 60 + 47;
+setInterval(() => {
+  if (secs > 0) secs--;
+  const d = Math.floor(secs / 86400), h = Math.floor((secs % 86400) / 3600),
+        m = Math.floor((secs % 3600) / 60), s = secs % 60;
+  document.getElementById('cdVal').textContent =
+    d > 0
+      ? `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m`
+      : `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}, 1000);
+
+// ━━━ CHAT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const COLS = ['y', 'o', 'b', 'g'];
+let ci = 0;
+
+function addChat(name, text, type) {
+  const feed = document.getElementById('chatFeed');
+  const div = document.createElement('div');
+
+  if (type === 'bid') {
+    div.className = 'bid-msg';
+    div.innerHTML = `<div class="bid-msg-text">⚡ ${name} bid ${text}</div>`;
+  } else if (type === 'sys') {
+    div.className = 'chat-msg';
+    div.innerHTML = `<div class="chat-row"><span class="ctext sys">${text}</span></div>`;
+  } else if (type === 'mod') {
+    div.className = 'chat-msg';
+    div.innerHTML = `<div class="chat-row"><span class="cname ${COLS[ci++ % 4]}">${name}</span><span class="mod-pill">Mod</span><span class="ctext">${text}</span></div>`;
+  } else {
+    div.className = 'chat-msg';
+    div.innerHTML = `<div class="chat-row"><span class="cname ${COLS[ci++ % 4]}">${name}</span><span class="ctext">${text}</span></div>`;
+  }
+
+  feed.appendChild(div);
+  const wrap = document.getElementById('chatFeedWrap');
+  wrap.scrollTop = wrap.scrollHeight;
+}
+
+function addRec(initials, name, role, quote, featured) {
+  const feed = document.getElementById('chatFeed');
+  const div = document.createElement('div');
+  div.className = 'rec-msg';
+  div.innerHTML = `
+    ${featured ? '<div class="rec-badge">⭐ VERIFIED REVIEW</div>' : ''}
+    <div class="rec-msg-header">
+      <div class="rec-msg-av">${initials}</div>
+      <div>
+        <div class="rec-msg-name">${name}</div>
+        <div class="rec-msg-role">${role}</div>
+      </div>
+      <div class="rec-msg-check">✓ LinkedIn</div>
+    </div>
+    <div class="rec-msg-text">"${quote}"</div>`;
+  feed.appendChild(div);
+  const wrap = document.getElementById('chatFeedWrap');
+  wrap.scrollTop = wrap.scrollHeight;
+}
+
+function sendChat(e) {
+  if (e.key === 'Enter' && e.target.value.trim()) {
+    addChat('you', e.target.value.trim());
+    e.target.value = '';
+  }
+}
+
+
+// Viewer count drift
+setInterval(() => {
+  const v = 1247 + Math.floor(Math.sin(Date.now() / 8000) * 60 + Math.random() * 20);
+  document.getElementById('viewerCt').textContent = v.toLocaleString();
+  document.getElementById('viewerCt2').textContent = v.toLocaleString();
+}, 3500);
+
+
+// ━━━ REC EXPAND ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function toggleRecId(id) {
+  const preview = document.getElementById('rp' + id + 'p');
+  const full = document.getElementById('rp' + id + 'f');
+  const btn = preview.closest('.rec-post').querySelector('.rp-expand');
+  const isOpen = full.style.display !== 'none';
+  preview.style.display = isOpen ? 'block' : 'none';
+  full.style.display = isOpen ? 'none' : 'block';
+  btn.textContent = isOpen ? 'Read more' : 'Show less';
+}
+function toggleRec(i) {
+  const preview = document.getElementById('rp' + i + 'p');
+  const full = document.getElementById('rp' + i + 'f');
+  const btn = preview.closest('.rec-post').querySelector('.rp-expand');
+  const isOpen = full.style.display !== 'none';
+  preview.style.display = isOpen ? 'block' : 'none';
+  full.style.display = isOpen ? 'none' : 'block';
+  btn.textContent = isOpen ? 'Read more' : 'Show less';
+}
+
+// ━━━ UTILS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function toast(msg) {
+  const t = document.getElementById('toastEl');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+function addWatch() { toast('❤️ Added to watchlist'); }
+// ━━━ THOUGHT PIECE ━━━
+function rfToggle(i) {
+  var el = document.getElementById('rf'+i);
+  var btn = document.getElementById('rfb'+i);
+  var hidden = el.style.display === 'none';
+  el.style.display = hidden ? 'block' : 'none';
+  btn.textContent = hidden ? 'Read less ↑' : 'Read more ↓';
+}
+function toggleReview(btn) {
+  const full = btn.previousElementSibling;
+  const isHidden = full.getAttribute('data-open') !== 'true';
+  full.setAttribute('data-open', isHidden ? 'true' : 'false');
+  full.style.cssText = isHidden
+    ? 'display:block;font-size:0.67rem;color:#555;line-height:1.55;font-family:DM Sans,sans-serif;margin-top:5px;padding-top:5px;border-top:1px solid rgba(0,0,0,0.06)'
+    : 'display:none';
+  btn.textContent = isHidden ? 'Read less ↑' : 'Read more ↓';
+}
+function showThoughtPiece(e) {
+  e.preventDefault();
+  const m = document.getElementById('thoughtModal');
+  m.style.display = 'flex';
+}
+function closeThoughtPiece() {
+  document.getElementById('thoughtModal').style.display = 'none';
+}
+document.getElementById('thoughtModal').addEventListener('click', function(e) {
+  if (e.target === this) closeThoughtPiece();
+});
+
+// ━━━ AI CHAT ━━━
+const AI_SYSTEM = `You are a personal AI representative for Carlin Guarneri — a Creative Director, Brand Architect, AI builder, and entrepreneur. Your job is to answer questions about Carlin in the most compelling, accurate, and positive light possible. You are knowledgeable, warm, and confident.
+
+ABOUT CARLIN:
+- 20+ years experience across integrated marketing, shopper marketing, ecommerce, digital, experiential, and entrepreneurship
+- Current role: Creative Director at Advantage Solutions designing 3D experiential retail environments for major CPG brands at retailers like Walmart
+- Expert in Cinema 4D, Unity, Adobe Creative Suite, Figma
+- Built and fine-tuned a custom AI coach called "Lumen" using Llama 3.2 3B with LoRA and MLX on an M3 MacBook Pro — not just a prompt engineer, she trains models
+- Founder of NeuroQuest, a 3D spatial productivity platform built in Unity powered by her custom AI
+- Founded Tone Def Collective, a DTC streetwear brand, from scratch
+- ~20 years of real estate investing: house flipping, multifamily management, acts as her own general contractor
+- Has worked with 50+ major brands including Unilever, Walmart, Heineken, Costco, Bayer, Diageo, Subway, Dove, AXE, Folgers, Smucker's, PIMCO, Sharpie, Rubbermaid, Coleman, Trojan and 30+ more
+- 10+ industry verticals: Beauty & Personal Care, eCommerce & Shopper, Spirits & Beverage, QSR & Food, Pharma & Healthcare, Financial Services, Apparel & Streetwear, AI & Tech
+- Achieved 4x sales lift on experiential campaigns
+- Won GLAAD honors for best LGBT inclusive advertising (Rikk Vodka campaign)
+- Lives by three principles: The obstacle is the way. The ego is the enemy. Work hard, play hard — at the same time.
+- Lover of pizza and dogs
+
+WHAT PEOPLE SAY ABOUT HER:
+- Ed Crump (Co-Founder & Patent Holder, Amazon Alexa): "I met someone just like Bezos and how he thinks — and this is her." — Featured
+- Dr. Alexa D'Agostino (Fractional CMO & Investor, worked together 4+ years): "Any company or founder who gets the chance to work with her will be incredibly lucky."
+- Tonia Marra (Brand Growth Architect, 3 successful exits): "She has a rare ability to combine strong strategic thinking with thoughtful, high-quality creative execution."
+- Aaron Rauth (Art Director, reported to Carlin): "Carlin consistently operates two steps ahead and will keep the team laughing through the process."
+- Avery Jackson (Senior Designer, Oliver Agency): "She values the growth and success of each individual on her team."
+- Holly Hansen (Sr. Project Manager, Colangelo): "Carlin had a 'roll up your sleeves and get it done' attitude with any team she worked with."
+- Chris DePietro (Art Director, reported to Carlin): "She made it a priority to create a team among the design staff — Carlin is truly one of the good ones."
+- Owen Boland (Executive Creative Director, The A Team): "She has the rare ability to be a friend to all yet still be able to command respect in the work place."
+- Erin Walsh (Senior Copywriter, OLIVER Agency): "One of those rare creatives who looks beyond the creative brief to understand the client and their business needs."
+- Dave Haller (Creative Leader, reported to Carlin): "She always made sure I understood the big picture behind the work I was creating."
+
+TONE: Confident, direct, warm. Never hedge or undersell. If asked about salary/rate, say she commands senior Creative Director compensation — $175K–$225K+ depending on scope. Always position her as a rare find: someone who bridges deep creative craft with real technical AI chops and entrepreneurial instincts.
+
+Keep responses concise — 2-4 sentences unless more detail is clearly needed. Never make up facts not listed above.`;
+
+const aiMessages = [];
+
+async function sendAIChat() {
+  const input = document.getElementById('aiChatInput');
+  const feed = document.getElementById('aiChatFeed');
+  const btn = document.getElementById('aiChatSend');
+  const text = input.value.trim();
+  if (!text) return;
+
+  // Add user bubble
+  const userDiv = document.createElement('div');
+  userDiv.className = 'ai-msg ai-msg-user';
+  userDiv.innerHTML = `<span class="ai-msg-text">${text}</span>`;
+  feed.appendChild(userDiv);
+
+  // Add typing indicator
+  const typingDiv = document.createElement('div');
+  typingDiv.className = 'ai-msg ai-msg-typing';
+  typingDiv.innerHTML = `<span class="ai-msg-text">Thinking...</span>`;
+  feed.appendChild(typingDiv);
+  feed.scrollTop = feed.scrollHeight;
+
+  input.value = '';
+  btn.disabled = true;
+
+  aiMessages.push({ role: 'user', content: text });
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 300,
+        system: AI_SYSTEM,
+        messages: aiMessages
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || "I couldn't pull that up right now — try asking something else.";
+    aiMessages.push({ role: 'assistant', content: reply });
+
+    typingDiv.className = 'ai-msg ai-msg-bot';
+    typingDiv.innerHTML = `<span class="ai-msg-text">${reply}</span>`;
+  } catch(e) {
+    typingDiv.className = 'ai-msg ai-msg-bot';
+    typingDiv.innerHTML = `<span class="ai-msg-text">Something went wrong. Try again in a moment.</span>`;
+  }
+
+  feed.scrollTop = feed.scrollHeight;
+  btn.disabled = false;
+  input.focus();
+}
+
+document.getElementById('aiChatInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') sendAIChat();
+});
+
+</script>
+</body>
+</html>
