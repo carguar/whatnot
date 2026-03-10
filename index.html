@@ -249,7 +249,7 @@ body {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .layout {
   display: grid;
-  grid-template-columns: 220px 1fr 300px;
+  grid-template-columns: 280px 1fr 340px;
   height: calc(100vh - 48px);
   min-width: 800px;
   overflow: hidden;
@@ -437,13 +437,11 @@ body {
   background: #ffffff;
 }
 .stream-wrap {
-  flex: 1;
   position: relative;
-  min-height: 0;
   overflow: hidden;
-  padding: 20px;
-  box-sizing: border-box;
-  background: #f5f5f7;
+  background: #000;
+  flex: 1;
+  min-height: 0;
 }
 canvas#streamCanvas {
   width: 100%;
@@ -1574,18 +1572,14 @@ canvas#streamCanvas {
   <!-- ━━━ STREAM CENTER ━━━ -->
   <main class="stream-col">
     <div class="stream-wrap">
-      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-        <div style="position:relative;width:100%;max-width:560px;aspect-ratio:16/9;border-radius:10px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.12);">
-          <iframe
-            src="https://www.youtube.com/embed/AgurnSy_ThY?autoplay=0&rel=0&modestbranding=1"
-            title="Carlin Guarneri — Creative Director"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            style="position:absolute;inset:0;width:100%;height:100%;border:none;">
-          </iframe>
-        </div>
-      </div>
+      <iframe
+        src="https://www.youtube.com/embed/AgurnSy_ThY?autoplay=0&rel=0&modestbranding=1"
+        title="Carlin Guarneri — Creative Director"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="position:absolute;inset:0;width:100%;height:100%;border:none;">
+      </iframe>
 
       <div class="stream-overlay">
 
@@ -1617,21 +1611,20 @@ canvas#streamCanvas {
         <!-- Work Carousel -->
 
 
-        <!-- Bottom -->
-        <div>
-          <div class="stream-desc-bar">
-            <div class="sdb-lot">Lot #001 · Associate Creative Director</div>
-            <div class="sdb-body">20+ years of integrated marketing, shopper, ecomm, digital, experiential, and entrepreneurship — now fully enhanced with AI. Led campaigns for major CPG brands, designed immersive retail environments at scale, built a DTC brand from scratch, and currently developing a 3D productivity platform powered by a custom AI coach trained from scratch. The obstacle is the way. The ego is the enemy. Work hard, play hard — at the same time.</div>
-            <div class="sdb-price" id="streamPrice">$174,999</div>
-          </div>
-          <a class="bid-bar" id="bidBarBtn" href="mailto:carlinguarneri@gmail.com?subject=Let%27s%20Talk%20%E2%80%94%20Creative%20Director%20Role&body=Hi%20Carlin%2C%0A%0AI%20came%20across%20your%20profile%20and%20would%20love%20to%20connect.%0A%0A" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">
-            ⚡ Place Bid — Contact Carlin
-            <span class="bid-bar-hint">· Let's talk</span>
-          </a>
-        </div>
 
       </div>
     </div>
+
+    <!-- Lot description and bid bar — outside the video wrap -->
+    <div class="stream-desc-bar">
+      <div class="sdb-lot">Lot #001 · Associate Creative Director</div>
+      <div class="sdb-body">20+ years of integrated marketing, shopper, ecomm, digital, experiential, and entrepreneurship — now fully enhanced with AI. Led campaigns for major CPG brands, designed immersive retail environments at scale, built a DTC brand from scratch, and currently developing a 3D productivity platform powered by a custom AI coach trained from scratch. The obstacle is the way. The ego is the enemy. Work hard, play hard — at the same time.</div>
+      <div class="sdb-price" id="streamPrice">$174,999</div>
+    </div>
+    <a class="bid-bar" id="bidBarBtn" href="mailto:carlinguarneri@gmail.com?subject=Let%27s%20Talk%20%E2%80%94%20Creative%20Director%20Role&body=Hi%20Carlin%2C%0A%0AI%20came%20across%20your%20profile%20and%20would%20love%20to%20connect.%0A%0A" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">
+      ⚡ Place Bid — Contact Carlin
+      <span class="bid-bar-hint">· Let's talk</span>
+    </a>
   </main>
 
   <!-- ━━━ RIGHT PANEL ━━━ -->
