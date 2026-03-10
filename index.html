@@ -1434,12 +1434,25 @@ canvas#streamCanvas {
 /* ── MOBILE: clean stack — video, reviews, description ── */
 @media (max-width: 700px) {
 
+  /* Unlock scrolling — desktop locks html/body overflow */
+  html, body {
+    height: auto !important;
+    overflow: auto !important;
+    overflow-x: hidden !important;
+  }
+
   .layout {
     display: flex;
     flex-direction: column;
-    height: auto;
-    overflow: visible;
+    height: auto !important;
+    overflow: visible !important;
     min-width: 0;
+  }
+
+  /* Let all columns scroll naturally */
+  .stream-col, .panel-right, .rail-left {
+    overflow: visible !important;
+    height: auto !important;
   }
 
   /* Hide left rail + nav links */
