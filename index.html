@@ -437,10 +437,12 @@ body {
   background: #ffffff;
 }
 .stream-wrap {
-  flex: 1;
   position: relative;
-  min-height: 0;
+  width: 100%;
+  aspect-ratio: 16/9;
+  max-height: 340px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 canvas#streamCanvas {
   width: 100%;
@@ -1863,61 +1865,7 @@ canvas#streamCanvas {
 <div class="toast" id="toastEl"></div>
 
 <script>
-// ━━━ CANVAS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-const streamCanvas = document.getElementById('streamCanvas');
-const ctx = streamCanvas.getContext('2d');
-function resize() { streamCanvas.width = streamCanvas.offsetWidth; streamCanvas.height = streamCanvas.offsetHeight; }
-resize();
-window.addEventListener('resize', resize);
-
-let T = 0;
-
-const ORB = [
-  { x: 0.25, y: 0.45, r: 280, c: '255,140,50',  s: 1.1 },
-  { x: 0.72, y: 0.55, r: 240, c: '80,140,255',   s: 0.9 },
-  { x: 0.5,  y: 0.15, r: 200, c: '255,209,43',   s: 1.3 },
-  { x: 0.15, y: 0.82, r: 160, c: '52,211,153',   s: 0.7 },
-];
-
-function drawCanvas() {
-  T += 0.006;
-  const W = streamCanvas.width, H = streamCanvas.height;
-  ctx.clearRect(0, 0, W, H);
-  ctx.fillStyle = '#ffffff';
-  ctx.fillRect(0, 0, W, H);
-
-  // Orbs
-  ORB.forEach((o, i) => {
-    const ox = (o.x + Math.sin(T * o.s + i * 1.4) * 0.12) * W;
-    const oy = (o.y + Math.cos(T * o.s + i * 1.1) * 0.09) * H;
-    const g = ctx.createRadialGradient(ox, oy, 0, ox, oy, o.r * (W / 960));
-    g.addColorStop(0, `rgba(${o.c},0.09)`);
-    g.addColorStop(0.5, `rgba(${o.c},0.03)`);
-    g.addColorStop(1, 'transparent');
-    ctx.fillStyle = g;
-    ctx.fillRect(0, 0, W, H);
-  });
-
-  // Fine grid
-  ctx.strokeStyle = 'rgba(0,0,0,0.06)';
-  ctx.lineWidth = 1;
-  const G = 52;
-  for (let x = 0; x < W; x += G) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-  for (let y = 0; y < H; y += G) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
-
-  // Monogram watermark
-  ctx.save();
-  ctx.globalAlpha = 0.08;
-  ctx.font = `900 ${Math.min(W, H) * 0.38}px Outfit, sans-serif`;
-  ctx.fillStyle = '#000000';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('CG', W / 2, H / 2);
-  ctx.restore();
-
-  requestAnimationFrame(drawCanvas);
-}
-drawCanvas();
+// Canvas removed — replaced with YouTube embed
 
 // ━━━ WORK DATA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 const WORK = [
